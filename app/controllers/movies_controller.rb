@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    @movies = Movie.all.order(params[:sort_by])
   end
 
   def new
@@ -42,4 +42,7 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def sort
+    @movie = Movie.find(params[id])
+  end
 end
